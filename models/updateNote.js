@@ -1,8 +1,8 @@
 const fs = require("fs/promises");
 const path = require("path");
+const createError = require("http-errors");
 const getAll = require("./getAll");
 const datesFromText = require("../services/datesFromText");
-const getNote = require("./getNote");
 
 const notesPath = path.resolve("myNotes.json");
 
@@ -15,7 +15,7 @@ const updateNote = async (id, body) => {
     if (note.id === String(id)) return note;
   });
   if (noteIndex === -1) {
-    return null;
+    throw new createError(404, `Note whith id:${id} - not found`);
   }
   if (body.content) {
     const newDates = {

@@ -7,8 +7,11 @@ const createNewDate = require("../services/createNewDate");
 
 const notesPath = path.resolve("myNotes.json");
 
-const createNote = async (name = "unnamed", category = "Task", content) => {
-  console.log(name, category, content);
+const createNote = async (
+  name = "unnamed",
+  category = "Task",
+  content = ""
+) => {
   const newNote = {
     id: crypto.randomUUID(),
     name,
