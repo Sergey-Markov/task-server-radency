@@ -2,7 +2,24 @@ const express = require("express");
 const createError = require("http-errors");
 const notesOperations = require("../models");
 const router = express.Router();
+const Joi = require("joi");
 
+const joiSchemaForPost = Joi.object({
+  name: Joi.string(),
+  category: Joi.symbol()
+    .map({
+      "Random Tought": Symbol("Random Tought"),
+      Task: Symbol("Task"),
+      Idea: Symbol("Idea"),
+    })
+    .required(),
+  content: Joi.string(),
+});
+
+const joiSchemaForPatch = Joi.object({
+  content: Joi.string(),
+  archived: Joi.bool(),
+});
 /* GET users listing. */
 router.get("/", async (req, res, next) => {
   try {
@@ -39,6 +56,10 @@ router.patch("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const body = req.body;
+    const { error } = joiSchemaForPatch.validate(body);
+    if (error) {
+      throw new createError(404, `${error.message}`);
+    }
     if (
       body.name ||
       body.date ||
@@ -64,6 +85,10 @@ router.patch("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
+    const { error } = joiSchemaForPost.validate(req.body);
+    if (error) {
+      throw new createError(400, `${error.message}`);
+    }
     const { name, category, content } = req.body;
     const note = await notesOperations.createNote(name, category, content);
     res.status(201).json({
