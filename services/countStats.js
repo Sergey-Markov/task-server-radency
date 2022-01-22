@@ -13,7 +13,7 @@ const countStats = (notes) => {
       stats.idea += 1;
     }
     if (note.archived === true && note.category === "Idea") {
-      category.ideaArch += 1;
+      stats.ideaArch += 1;
     }
 
     if (note.archived === false && note.category === "Task") {
