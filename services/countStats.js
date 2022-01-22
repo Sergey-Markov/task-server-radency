@@ -8,7 +8,6 @@ const countStats = (notes) => {
     ideaArch: 0,
   };
   notes.map((note) => {
-    console.log(note.category);
     if (note.archived === false && note.category === "Idea") {
       stats.idea += 1;
     }

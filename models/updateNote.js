@@ -7,7 +7,6 @@ const datesFromText = require("../services/datesFromText");
 const notesPath = path.resolve("myNotes.json");
 
 const updateNote = async (id, body) => {
-  console.log(id, body);
   const notes = await getAll();
   const content = body.content;
 
