@@ -16,8 +16,8 @@ const server = http.createServer(app);
 mongoose
   .connect(DB_HOST)
   .then(() => {
+    console.log("Connect to data base succes");
     server.listen(port, () => {
-      console.log("Connect to data base succes");
       console.log(`server listen port:${port}`);
     });
   })
