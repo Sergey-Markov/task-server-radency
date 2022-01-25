@@ -4,21 +4,18 @@ const app = require("../app");
 const debug = require("debug")("task-server-radency:server");
 const http = require("http");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-dotenv.config();
 
 const DB_HOST = process.env.CONNECT;
-const port = normalizePort(process.env.PORT || "3001");
+const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
 const server = http.createServer(app);
-
 mongoose
   .connect(DB_HOST)
   .then(() => {
     console.log("Connect to data base succes");
     server.listen(port, () => {
-      console.log(`server listen a port:${port}`);
+      console.log(`server listen port:${port}`);
     });
   })
   .catch((error) => console.log(error));
