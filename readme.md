@@ -1,4 +1,4 @@
-1. Для того чтоб отправить новую заметку(POST http://localhost:3001/notes) нужно, отправить объект с полями:
+1. Для того чтоб отправить новую заметку(POST http://list-nodes.herokuapp.com/notes) нужно, отправить объект с полями:
    {
    "name": "Me",
    "category": "Idea",
@@ -20,17 +20,16 @@
    }
    }
 
-2. Для того чтоб изменить заметку(PATCH http://localhost:3001/notes/:id) отправляем объект:
+2. Для того чтоб изменить заметку(PATCH http://list-nodes.herokuapp.com/notes/:id) отправляем объект:
    {
    "content": "sport every day at 01.01.2022",
    }
-   - для того чтоб перевести заметку в архив используем:
+   - для того чтоб перевести заметку в архив используем в теле запроса:
      {
-     "content": "sport every day at 01.01.2022",
      "archived":true
      }
 3. Роуты для работы:
-   Получить все заметки: GET http://localhost:3001/notes,
-   Получить статистику по заметкам: GET http://localhost:3001/notes/stats,
-   Получить заметку по id: GET http://localhost:3001/notes/:id,
-   Удалить заметку по id: DELETE http://localhost:3001/notes/:id
+   Получить все заметки: GET http://list-nodes.herokuapp.com/notes,
+   Получить статистику по заметкам: GET http://list-nodes.herokuapp.com/notes/stats,
+   Получить заметку по id: GET http://list-nodes.herokuapp.com/notes/:id,
+   Удалить заметку по id: DELETE http://list-nodes.herokuapp.com/notes/:id
