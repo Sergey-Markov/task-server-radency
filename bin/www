@@ -5,7 +5,7 @@ const debug = require("debug")("task-server-radency:server");
 const http = require("http");
 const mongoose = require("mongoose");
 
-const DB_HOST = process.env.CONNECT;
+const { DB_HOST } = process.env;
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
