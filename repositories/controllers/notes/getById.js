@@ -1,9 +1,9 @@
-const notesOperations = require("../../../models/");
+const { Note } = require("../../../models/dbModels");
 const createError = require("http-errors");
 
 const getById = async (req, res) => {
   const { id } = req.params;
-  const note = await notesOperations.getNote(id);
+  const note = await Note.findById(id);
   if (!note) {
     throw new createError(404, `Note whith id:${id} - Not found`);
   }

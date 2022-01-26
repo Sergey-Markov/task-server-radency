@@ -1,8 +1,8 @@
-const notesOperations = require("../../../models/");
+const { Note } = require("../../../models/dbModels");
 
 const deleteById = async (req, res) => {
   const { id } = req.params;
-  const note = await notesOperations.remooveNote(id);
+  const note = await Note.findByIdAndDelete(id);
   res.status(201).json({
     status: "succes",
     code: 201,

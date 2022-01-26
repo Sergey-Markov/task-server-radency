@@ -1,5 +1,6 @@
-const notesOperations = require("../../../models/");
+const { Note } = require("../../../models/dbModels");
 const createError = require("http-errors");
+const datesFromText = require("../../../services/datesFromText");
 
 const updateById = async (req, res) => {
   const { id } = req.params;
@@ -16,11 +17,19 @@ const updateById = async (req, res) => {
       `The note with the specified parameters cannot be changed, do not transfer the following parameters in the query body: name, date, category, id`
     );
   }
-  const note = await notesOperations.updateNote(id, req.body);
+  const { content, archived } = req.body;
+  const allDatesFromText = datesFromText(content);
+  const newNote = {
+    content,
+    allDatesFromText,
+    archived,
+  };
+  await Note.findByIdAndUpdate(id, newNote);
+  const updatedNote = await Note.findById(id);
   res.status(201).json({
     status: "succes",
     code: 201,
-    data: note,
+    data: updatedNote,
   });
 };
 
