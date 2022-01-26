@@ -24,8 +24,8 @@ const updateById = async (req, res) => {
     allDatesFromText,
     archived,
   };
-  await Note.findByIdAndUpdate(id, newNote);
-  const updatedNote = await Note.findById(id);
+  const updatedNote = await Note.findByIdAndUpdate(id, newNote, { new: true });
+  // const updatedNote = await Note.findById(id);
   res.status(201).json({
     status: "succes",
     code: 201,
