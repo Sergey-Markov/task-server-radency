@@ -20,7 +20,7 @@ router.post(
   validation(schems.joiSchemaForPost),
   ctrlWrapper(ctrl.addNote)
 );
-router.delete("/all", ctrlWrapper(ctrl.deleteAll));
+router.delete("/deleteall", ctrlWrapper(ctrl.deleteAll));
 
 router.delete("/:id", ctrlWrapper(ctrl.deleteById));
 
