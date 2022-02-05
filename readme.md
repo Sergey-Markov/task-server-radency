@@ -32,4 +32,7 @@
    Получить все заметки: GET http://list-nodes.herokuapp.com/notes,
    Получить статистику по заметкам: GET http://list-nodes.herokuapp.com/notes/stats,
    Получить заметку по id: GET http://list-nodes.herokuapp.com/notes/:id,
-   Удалить заметку по id: DELETE http://list-nodes.herokuapp.com/notes/:id
+   Удалить заметку по id: DELETE http://list-nodes.herokuapp.com/notes/:id,
+   Удалить все заметки: DELETE http://list-nodes.herokuapp.com/notes/deleteall
+
+4. Пример работы с сервером:https://sergey-markov.github.io/radency-test-task-second-react/
